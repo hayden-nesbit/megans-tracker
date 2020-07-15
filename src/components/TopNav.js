@@ -21,12 +21,15 @@ const TopNav = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div id="nav">
-      <Navbar light expand="md">
-        <NavbarBrand href="/">Meg Nesbit Design</NavbarBrand>
+    <div >
+      <Navbar color="dark" dark expand="md">
+        <NavbarBrand id="nav" href="/">Meg Nesbit Design</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar >
+            <NavItem>
+              <NavLink href="#" onClick={() => props.setView("quick")}>Quick View</NavLink>
+            </NavItem>
             <NavItem>
               <NavLink href="#" onClick={() => props.setView("inventory")}>Inventory</NavLink>
             </NavItem>

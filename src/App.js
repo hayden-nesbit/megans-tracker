@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import TopNav from './components/TopNav'
-import Finance from './components/Finance'
 import QuickView from './components/QuickView'
 import InputForm from './components/Form'
 import Inventory from './components/Inventory'
+import Commission from './components/Commission'
+import Finance from './components/Finance'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
       {view === "quick" ? 
         <div className="row mb-5">
           <div className="col-md-8 col-12">
+          <legend>Upcoming</legend>
             <QuickView
               list={list}
               storeList={storeList}
@@ -67,9 +69,14 @@ function App() {
           storeList={storeList}
         />
         : view === "commissions" ?
-        "Commissions"
+        <Commission 
+          list={list}
+          storeList={storeList}
+        />
         : view === "finances" ?
-        "Finances"
+        <Finance 
+          list={list}
+        />
         : view === "receipts" ?
         "Receipts"
         :

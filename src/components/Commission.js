@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-function Inventory(props) {
+function Commission(props) {
 
     function deleteInventory(title) {
         let newArr = props.list.filter(item => item.title !== title)
@@ -11,10 +11,9 @@ function Inventory(props) {
         console.log(title)
     }
 
-    let inventory = props.list ? props.list.filter(item => item.type === "Inventory") : null
-    console.log(inventory)
+    let commission = props.list ? props.list.filter(item => item.type === "Commission") : null
 
-    let showList = inventory ? inventory.map((item, index) => {
+    let showList = commission ? commission.map((item, index) => {
         let days = Math.floor((new Date(item.due).getTime() - new Date().getTime()) / (1000 * 3600 * 24))
 
         return (
@@ -53,4 +52,4 @@ function Inventory(props) {
         </Table>
     );
     }
-export default Inventory
+export default Commission

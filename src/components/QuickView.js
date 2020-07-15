@@ -11,7 +11,9 @@ const QuickView = (props) => {
         console.log(title)
     }
 
-    let showList = props.list ? props.list.map((item, index) => {
+    let upcoming = props.list ? props.list.filter(item => (new Date(item.due).getTime() - new Date().getTime()) / (1000 * 3600 * 24) < 7) : null
+
+    let showList = upcoming ? upcoming.map((item, index) => {
         let days = Math.floor((new Date(item.due).getTime() - new Date().getTime()) / (1000 * 3600 * 24))
 
         return (
@@ -21,7 +23,7 @@ const QuickView = (props) => {
                 <td>{item.title}</td>
                 <td>{item.dimensions}</td>
                 <td>{item.status}</td>
-                <td>{item.price}</td>
+                <td>${item.price}</td>
                 <td>{item.buyer}</td>
                 <td className={days < 7 ? "text-danger" : null}>{days} days</td>
             </tr>

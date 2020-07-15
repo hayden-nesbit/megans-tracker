@@ -68,7 +68,7 @@ const InputForm = (props) => {
       </FormGroup>
       <FormGroup>
         <Label for="examplePassword">Price</Label>
-        <Input onChange={(e) => props.setPrice(e.target.value)} value={props.price} type="price" name="price" id="examplePassword" placeholder="0" />
+        <Input onChange={(e) => props.setPrice(parseInt(e.target.value))} value={props.price} type="price" name="price" id="examplePassword" placeholder="0" />
       </FormGroup>
       <FormGroup>
         <Label for="exampleEmail">Buyer</Label>
