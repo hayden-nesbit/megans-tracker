@@ -20,12 +20,14 @@ const InputForm = (props) => {
       "img": props.img
     }
 
+    console.log(newObj)
+
     newEntry.push(newObj)
 
-    props.inventory ?
-      props.storeInventory((props.inventory).concat(newEntry))
+    props.list ?
+      props.storeList((props.list).concat(newEntry))
       :
-      props.storeInventory(newEntry)
+      props.storeList(newEntry)
 
   }
 
@@ -36,13 +38,13 @@ const InputForm = (props) => {
           <legend>New entry</legend>
           <FormGroup check>
             <Label check>
-              <Input onChange={(e) => props.setType(e.target.value)} value={props.type} type="radio" name="radio1" />{' '}
+              <Input onChange={(e) => props.setType("Inventory")} type="radio" name="radio1" />{' '}
               Inventory
           </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input onChange={(e) => props.setType(e.target.value)} value={props.type} type="radio" name="radio1" />{' '}
+              <Input onChange={(e) => props.setType("Commission")} type="radio" name="radio1" />{' '}
               Commission
           </Label>
           </FormGroup>

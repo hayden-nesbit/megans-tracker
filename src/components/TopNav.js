@@ -13,6 +13,7 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import './TopNav.css'
 
 const TopNav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,23 +21,23 @@ const TopNav = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
+    <div id="nav">
+      <Navbar light expand="md">
         <NavbarBrand href="/">Meg Nesbit Design</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="mr-auto" navbar >
             <NavItem>
-              <NavLink href="/components/">Inventory</NavLink>
+              <NavLink href="#" onClick={() => props.setView("inventory")}>Inventory</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/commissions">Commissions</NavLink>
+              <NavLink href="#" onClick={() => props.setView("commissions")}>Commissions</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/commissions">Finances</NavLink>
+              <NavLink href="#" onClick={() => props.setView("finances")}>Finances</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/commissions">Receipts</NavLink>
+              <NavLink href="#" onClick={() => props.setView("receipts")}>Receipts</NavLink>
             </NavItem>
             {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

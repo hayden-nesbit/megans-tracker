@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import TopNav from './components/TopNav'
 import Finance from './components/Finance'
-import Inventory from './components/Inventory'
+import QuickView from './components/QuickView'
 import InputForm from './components/Form'
+import Inventory from './components/Inventory'
 
 function App() {
 
-  const [inventory, setInventory] = useState(JSON.parse(localStorage.getItem("inventoryData")));
+  const [view, setView] = useState("quick")
+  const [list, setList] = useState(JSON.parse(localStorage.getItem("inventoryData")));
   const [type, setType] = useState("")
   const [title, setTitle] = useState("")
   const [dimensions, setDimensions] = useState("")
@@ -16,26 +18,30 @@ function App() {
   const [due, setDue] = useState(new Date())
   const [img, setImg] = useState("")
 
-  function storeInventory(props) {
-    setInventory(props)
+  function storeList(props) {
+    setList(props)
     localStorage.setItem("inventoryData", JSON.stringify(props))
   }
 
   return (
     <>
-      <TopNav />
+      <TopNav 
+        view={view}
+        setView={setView}
+      />
       <div className="container mt-5">
+      {view === "quick" ? 
         <div className="row mb-5">
           <div className="col-md-8 col-12">
-            <Inventory
-              inventory={inventory}
-              storeInventory={storeInventory}
+            <QuickView
+              list={list}
+              storeList={storeList}
             />
           </div>
           <div className="col-md-4 col-12 bg-light rounded">
             <InputForm
-              inventory={inventory}
-              storeInventory={storeInventory}
+              list={list}
+              storeList={storeList}
               type={type}
               setType={setType}
               title={title}
@@ -55,6 +61,20 @@ function App() {
             />
           </div>
         </div>
+        : view === "inventory" ?
+        <Inventory 
+          list={list}
+          storeList={storeList}
+        />
+        : view === "commissions" ?
+        "Commissions"
+        : view === "finances" ?
+        "Finances"
+        : view === "receipts" ?
+        "Receipts"
+        :
+        null
+      }
       </div>
     </>
   );

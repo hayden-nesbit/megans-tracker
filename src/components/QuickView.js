@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-function Inventory(props) {
+const QuickView = (props) => {
 
     function deleteInventory(title) {
         let newArr = props.list.filter(item => item.title !== title)
@@ -11,10 +11,7 @@ function Inventory(props) {
         console.log(title)
     }
 
-    let inventory = props.list.filter(item => item.type === "Inventory")
-    console.log(inventory)
-
-    let showInventory = inventory ? inventory.map((item, index) => {
+    let showList = props.list ? props.list.map((item, index) => {
         let days = Math.floor((new Date(item.due).getTime() - new Date().getTime()) / (1000 * 3600 * 24))
 
         return (
@@ -48,9 +45,10 @@ function Inventory(props) {
                 </tr>
             </thead>
             <tbody>
-                {showInventory}
+                {showList}
             </tbody>
         </Table>
     );
-    }
-export default Inventory
+}
+
+export default QuickView;
