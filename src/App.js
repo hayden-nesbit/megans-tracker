@@ -38,6 +38,8 @@ function App() {
             <QuickView
               list={list}
               storeList={storeList}
+              status={status}
+              setStatus={setStatus}
             />
           </div>
           <div className="col-md-4 col-12 bg-light rounded">

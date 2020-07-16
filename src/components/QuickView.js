@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import StatusButton from './StatusButton'
 
 const QuickView = (props) => {
 
@@ -22,8 +23,13 @@ const QuickView = (props) => {
                 <td>{item.type}</td>
                 <td>{item.title}</td>
                 <td>{item.dimensions}</td>
-                <td>{item.status}</td>
-                <td>${item.price}</td>
+                <td><StatusButton 
+                    thisStatus={item.status}
+                    setStatus={props.setStatus}
+                    title={item.title}
+                    list={props.list}
+                    storeList={props.storeList}
+                /></td>
                 <td>{item.buyer}</td>
                 <td className={days < 7 ? "text-danger" : null}>{days} days</td>
             </tr>
@@ -41,7 +47,7 @@ const QuickView = (props) => {
                     <th>Title</th>
                     <th>Dimensions</th>
                     <th>Status</th>
-                    <th>Price</th>
+                    {/* <th>Price</th> */}
                     <th>Buyer</th>
                     <th>Due</th>
                 </tr>
