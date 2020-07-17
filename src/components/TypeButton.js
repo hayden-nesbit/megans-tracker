@@ -12,7 +12,7 @@ const TypeButton = (props) => {
                 Type
             </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem onClick={() => props.setFilter("Stock")}>Stock</DropdownItem>
+                <DropdownItem onClick={() => props.setFilter("Original")}>Original</DropdownItem>
                 <DropdownItem onClick={() => props.setFilter("Commission")}>Commission</DropdownItem>
                 <DropdownItem onClick={() => props.setFilter("All")}>All</DropdownItem>
             </DropdownMenu>

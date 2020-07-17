@@ -38,8 +38,8 @@ const InputForm = (props) => {
           <legend>New entry</legend>
           <FormGroup check>
             <Label check>
-              <Input onChange={(e) => props.setType("Stock")} type="radio" name="radio1" />{' '}
-              Stock
+              <Input onChange={(e) => props.setType("Original")} type="radio" name="radio1" />{' '}
+              Original
           </Label>
           </FormGroup>
           <FormGroup check>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import TopNav from './components/TopNav'
 import QuickView from './components/QuickView'
-import InputForm from './components/Form'
+import InputForm from './components/InventoryForm'
 import Inventory from './components/Inventory'
-import Commission from './components/Commission'
 import Finance from './components/Finance'
 
 function App() {
@@ -18,10 +17,23 @@ function App() {
   const [buyer, setBuyer] = useState("")
   const [due, setDue] = useState(new Date())
   const [img, setImg] = useState("")
+  const [supplies, setSupplies] = useState(JSON.parse(localStorage.getItem("supplyData")));
+  const [purchaseDate, setPurchaseDate] = useState(new Date())
+  const [supply, setSupply] = useState("")
+  const [store, setStore] = useState("")
+  const [supplyPrice, setSupplyPrice] = useState("")
+  const [receipt, setReceipt] = useState("")
+
+
 
   function storeList(props) {
     setList(props)
     localStorage.setItem("inventoryData", JSON.stringify(props))
+  }
+
+  function storeSupplies(props) {
+    setSupplies(props)
+    localStorage.setItem("supplyData", JSON.stringify(props))
   }
 
   return (
@@ -70,14 +82,21 @@ function App() {
           list={list}
           storeList={storeList}
         />
-        : view === "commissions" ?
-        <Commission 
-          list={list}
-          storeList={storeList}
-        />
         : view === "finances" ?
         <Finance 
           list={list}
+          supplies={supplies}
+          storeSupplies={storeSupplies}
+          supply={supply}
+          setSupply={setSupply}
+          store={store}
+          setStore={setStore}
+          purchaseDate={purchaseDate}
+          setPurchaseDate={setPurchaseDate}
+          supplyPrice={supplyPrice}
+          setSupplyPrice={setSupplyPrice}
+          receipt={receipt}
+          setReceipt={setReceipt}
         />
         : view === "receipts" ?
         "Receipts"

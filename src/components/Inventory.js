@@ -19,7 +19,7 @@ function Inventory(props) {
 
     let showList = filterView.map((item, index) => {
         let days = Math.floor((new Date(item.due).getTime() - new Date().getTime()) / (1000 * 3600 * 24))
-        let display = days > 1 ? days + " days" : "None"
+        let display = days > 1 ? days + " days" : ""
 
         return (
 

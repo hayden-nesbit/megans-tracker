@@ -23,7 +23,7 @@ const TopNav = (props) => {
   return (
     <div >
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand id="nav" href="/">Meg Nesbit Design</NavbarBrand>
+        <NavbarBrand id="nav" href="https://www.megnesbitdesign.com/" target="_blank">Meg Nesbit Design</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar >
@@ -32,9 +32,6 @@ const TopNav = (props) => {
             </NavItem>
             <NavItem>
               <NavLink href="#" onClick={() => props.setView("inventory")}>Inventory</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#" onClick={() => props.setView("commissions")}>Commissions</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#" onClick={() => props.setView("finances")}>Finances</NavLink>
